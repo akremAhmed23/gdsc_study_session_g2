@@ -1,0 +1,46 @@
+class Calculator {
+  double add(double a, double b) {
+    return a + b;
+  }
+
+  double subtract(double a, double b) {
+    return a - b;
+  }
+
+  double multiply(double a, double b) {
+    return a * b;
+  }
+
+  double divide(double a, double b) {
+    if (b == 0) {
+      throw ZeroDivisionError('Cannot divide by zero');
+    }
+    return a / b;
+  }
+}
+
+void main() async {
+  Calculator calculator = Calculator();
+
+  try {
+    double num1 = double.parse('5');  // Replace '5' with user input
+    double num2 = double.parse('2');  // Replace '2' with user input
+
+    // Perform calculations
+    double sum = calculator.add(num1, num2);
+    double difference = calculator.subtract(num1, num2);
+    double product = calculator.multiply(num1, num2);
+    double quotient = calculator.divide(num1, num2);
+
+    // Introduce a 5-second delay
+    await Future.delayed(Duration(seconds: 5));
+
+    // Print results
+    print('Sum: $sum');
+    print('Difference: $difference');
+    print('Product: $product');
+    print('Quotient: $quotient');
+  } catch (e) {
+    print('Error: $e');
+  }
+}
